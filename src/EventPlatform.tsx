@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 
 interface Event {
   id: number;
@@ -39,6 +39,7 @@ const dummyEvents: Event[] = [
   },
 ];
 
+
 const EventCard: React.FC<Event> = ({ image, date, location, description }) => (
   <div className="flex-shrink-0 w-80 mr-6 overflow-hidden rounded-lg shadow-lg">
     <div className="relative h-80">
@@ -58,43 +59,13 @@ const EventCard: React.FC<Event> = ({ image, date, location, description }) => (
 );
 
 const EventCarousel: React.FC<{ events: Event[] }> = ({ events }) => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
-      const { scrollLeft, clientWidth } = scrollRef.current;
-      const scrollTo =
-        direction === "left"
-          ? scrollLeft - clientWidth
-          : scrollLeft + clientWidth;
-      scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
-    }
-  };
-
   return (
-    <div className="relative">
-      <div
-        ref={scrollRef}
-        className="flex overflow-x-auto hide-scrollbar snap-x snap-mandatory"
-      >
-        {events.map((event) => (
-          <div key={event.id} className="snap-start">
-            <EventCard {...event} />
-          </div>
-        ))}
-      </div>
-      <button
-        onClick={() => scroll("left")}
-        className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full"
-      >
-        ←
-      </button>
-      <button
-        onClick={() => scroll("right")}
-        className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full"
-      >
-        →
-      </button>
+    <div className="flex overflow-x-auto hide-scrollbar snap-x snap-mandatory">
+      {events.map((event) => (
+        <div key={event.id} className="snap-start">
+          <EventCard {...event} />
+        </div>
+      ))}
     </div>
   );
 };
