@@ -79,10 +79,18 @@ const SearchBox: React.FC = () => (
     <input type="text" placeholder="Add Dates" className="px-4 border-l" />
     <select className="px-4 border-l">
       <option value="">Select Category</option>
+      <option value="Music">Music</option>
+      <option value="Sports">Sports</option>
+      <option value="Art">Art</option>
+      <option value="Food">Food</option>
+      <option value="Other">Other</option>
     </select>
     <input type="text" placeholder="Add Location" className="px-4 border-l" />
     <select className="px-4 border-l">
       <option value="">Select Price Range</option>
+      <option value="0 - 5">0 - 5</option>
+      <option value="5 - 10">5 - 10</option>
+      <option value="10 - 15">10 - 15</option>
     </select>
     <button className="bg-purple-600 text-white p-2 rounded-full">
       <svg
