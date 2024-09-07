@@ -1,12 +1,12 @@
 import React from "react";
 
-interface Event {
+type Event = {
   id: number;
   image: string;
   date: string;
   location: string;
   description: string;
-}
+};
 
 const dummyEvents: Event[] = [
   {
@@ -38,7 +38,6 @@ const dummyEvents: Event[] = [
     description: "Lorem ipsum dolor sit amet, conse adipiscing elit vest nunc.",
   },
 ];
-
 
 const EventCard: React.FC<Event> = ({ image, date, location, description }) => (
   <div className="flex-shrink-0 w-80 mr-6 overflow-hidden rounded-lg shadow-lg">
